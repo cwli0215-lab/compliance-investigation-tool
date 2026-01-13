@@ -1,94 +1,86 @@
-{\rtf1\ansi\ansicpg950\cocoartf2865
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww33400\viewh17420\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>Merchant Compliance Investigation Tool</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+    input, button { padding: 8px; margin: 6px 0; width: 100%; }
+    textarea { width: 100%; height: 300px; margin-top: 16px; }
+    .section { margin-top: 24px; }
+  </style>
+</head>
+<body>
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="zh-TW">\
-<head>\
-  <meta charset="UTF-8" />\
-  <title>Merchant Compliance Investigation Tool</title>\
-  <style>\
-    body \{ font-family: Arial, sans-serif; padding: 24px; \}\
-    input, button \{ padding: 8px; margin: 6px 0; width: 100%; \}\
-    textarea \{ width: 100%; height: 300px; margin-top: 16px; \}\
-    .section \{ margin-top: 24px; \}\
-  </style>\
-</head>\
-<body>\
-\
-<h1>\uc0\u21830 \u23478 \u21512 \u35215 \u35519 \u26597 \u24037 \u20855 \u65288 \u20839 \u37096 \u65289 </h1>\
-\
-<div class="section">\
-  <label>\uc0\u32113 \u19968 \u32232 \u34399 </label>\
-  <input id="companyId" placeholder="\uc0\u20363 \u22914 \u65306 54997559" />\
-\
-  <label>\uc0\u23448 \u26041 \u32178 \u31449 </label>\
-  <input id="website" placeholder="https://example.com" />\
-\
-  <button onclick="runInvestigation()">\uc0\u38283 \u22987 \u35519 \u26597 </button>\
-</div>\
-\
-<div class="section">\
-  <h2>\uc0\u35519 \u26597 \u22577 \u21578 \u65288 JSON\u65289 </h2>\
-  <textarea id="result" readonly></textarea>\
-</div>\
-\
-<script>\
-async function runInvestigation() \{\
-  const companyId = document.getElementById('companyId').value;\
-  const website = document.getElementById('website').value;\
-\
-  // MVP\uc0\u65306 \u20808 \u29992  mock + AI backend\
-  const mockResult = \{\
-    input: \{ companyId, website \},\
-    company_information: \{\
-      company_exists: true,\
-      company_name: "\uc0\u65288 \u31034 \u24847 \u65289 ",\
-      business_registration_summary: "\uc0\u21270 \u22941 \u21697 \u38646 \u21806 \u12289 \u39135 \u21697 \u38646 \u21806 "\
-    \},\
-    website_observation: \{\
-      observed_products: [\
-        \{\
-          name: "\uc0\u33184 \u21407 \u34507 \u30333 \u31881 ",\
-          detected_claims: ["\uc0\u20419 \u36914 ", "\u20445 \u39178 "],\
-          possible_regulation: "\uc0\u39135 \u21697 \u23433 \u20840 \u34907 \u29983 \u31649 \u29702 \u27861 "\
-        \},\
-        \{\
-          name: "\uc0\u20445 \u28629 \u31934 \u33775 \u28082 ",\
-          detected_claims: ["\uc0\u20445 \u28629 ", "\u20462 \u35703 "],\
-          possible_regulation: "\uc0\u21270 \u22941 \u21697 \u34907 \u29983 \u31649 \u29702 \u26781 \u20363 "\
-        \}\
-      ]\
-    \},\
-    potentially_applicable_regulations: [\
-      \{\
-        law_name: "\uc0\u21270 \u22941 \u21697 \u34907 \u29983 \u31649 \u29702 \u26781 \u20363 ",\
-        trigger_reason: "\uc0\u36009 \u21806 \u20445 \u39178 \u21697 ",\
-        public_registry_available: true\
-      \},\
-      \{\
-        law_name: "\uc0\u39135 \u21697 \u23433 \u20840 \u34907 \u29983 \u31649 \u29702 \u27861 ",\
-        trigger_reason: "\uc0\u36009 \u21806 \u39135 \u21697 ",\
-        public_registry_available: true\
-      \}\
-    ],\
-    uncertainties_and_gaps: [\
-      "\uc0\u26410 \u30906 \u35469 \u21270 \u22941 \u21697 \u29986 \u21697 \u26159 \u21542 \u23436 \u25104 \u30331 \u37636 ",\
-      "\uc0\u39135 \u21697 \u26159 \u21542 \u28041 \u21450 \u20581 \u24247 \u21151 \u25928 \u23459 \u31281 \u38656 \u20877 \u30906 \u35469 "\
-    ],\
-    investigation_limitations: [\
-      "\uc0\u20677 \u20381 \u20844 \u38283 \u32178 \u31449 \u36039 \u35338 "\
-    ]\
-  \};\
-\
-  document.getElementById('result').value =\
-    JSON.stringify(mockResult, null, 2);\
-\}\
-</script>\
-\
-</body>\
-</html>\
+<h1>商家合規調查工具（內部）</h1>
+
+<div class="section">
+  <label>統一編號</label>
+  <input id="companyId" placeholder="例如：54997559" />
+
+  <label>官方網站</label>
+  <input id="website" placeholder="https://example.com" />
+
+  <button onclick="runInvestigation()">開始調查</button>
+</div>
+
+<div class="section">
+  <h2>調查報告（JSON）</h2>
+  <textarea id="result" readonly></textarea>
+</div>
+
+<script>
+async function runInvestigation() {
+  const companyId = document.getElementById('companyId').value;
+  const website = document.getElementById('website').value;
+
+  // MVP：先用 mock + AI backend
+  const mockResult = {
+    input: { companyId, website },
+    company_information: {
+      company_exists: true,
+      company_name: "（示意）",
+      business_registration_summary: "化妝品零售、食品零售"
+    },
+    website_observation: {
+      observed_products: [
+        {
+          name: "膠原蛋白粉",
+          detected_claims: ["促進", "保養"],
+          possible_regulation: "食品安全衛生管理法"
+        },
+        {
+          name: "保濕精華液",
+          detected_claims: ["保濕", "修護"],
+          possible_regulation: "化妝品衛生管理條例"
+        }
+      ]
+    },
+    potentially_applicable_regulations: [
+      {
+        law_name: "化妝品衛生管理條例",
+        trigger_reason: "販售保養品",
+        public_registry_available: true
+      },
+      {
+        law_name: "食品安全衛生管理法",
+        trigger_reason: "販售食品",
+        public_registry_available: true
+      }
+    ],
+    uncertainties_and_gaps: [
+      "未確認化妝品產品是否完成登錄",
+      "食品是否涉及健康功效宣稱需再確認"
+    ],
+    investigation_limitations: [
+      "僅依公開網站資訊"
+    ]
+  };
+
+  document.getElementById('result').value =
+    JSON.stringify(mockResult, null, 2);
 }
+</script>
+
+</body>
+</html>
